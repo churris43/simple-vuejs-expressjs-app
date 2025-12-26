@@ -1,6 +1,11 @@
 <script setup lang="ts">
     import { ref, onMounted } from 'vue';
-    import { format, parseISO } from 'date-fns';
+    import JobListing from './JobListing.vue';
+    import { defineProps } from 'vue';
+
+    defineProps({
+        limit: Number
+    });
 
     interface Application {
      id: number
@@ -9,16 +14,10 @@
     }
 
     const applications = ref<Application[]>([])
-    // Helper function to format dates
-    const formatDate = (mysqlDatetime: string): string => {
-        const isoDate = mysqlDatetime.replace(' ', 'T')
-        return format(parseISO(isoDate), 'dd/MM/yyyy HH:mm')
-    }
     onMounted(async () => {
         try {
             const response = await fetch('http://localhost/api/test');
             applications.value = await response.json();
-
         } catch (error) {
             console.log('Error fetching applicatiokns')
         }
@@ -27,10 +26,10 @@
 
 <template>
     <ul>
-        <li v-for="application in applications" :key="application.id">
-            <span>Id: {{ application.id }}</span><br>
-            <span>Name: {{ application.name }}</span><br>
-            <span>Time: {{ formatDate(application.create_time) }}</span>
-        </li>
+        <JobListing
+            v-for="application in applications.slice(0, limit || applications.length)"
+            :key="application.id"
+            :application="application">
+        </JobListing>
     </ul>
 </template>

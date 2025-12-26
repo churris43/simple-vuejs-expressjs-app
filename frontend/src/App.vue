@@ -9,5 +9,5 @@
     <Navbar />
     <Hero title="List of Applications" subtitle="Here is the list of Applications"/>
     <HomeCard />
-    <JobListings />
+    <JobListings :limit="4"/>
 </template>
