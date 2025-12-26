@@ -14,8 +14,8 @@
 
     const showFullName = ref(false);
 
-    const truncatedName = computed(() => {
-        let name = props.application.name;
+    const truncatedName = computed<string>(() => {
+        let name: string = props.application.name;
         if (!showFullName.value) {
             name = name.substring(0, 10) + '...';
         }
