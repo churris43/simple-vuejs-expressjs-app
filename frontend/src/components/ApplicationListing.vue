@@ -12,27 +12,26 @@
         return format(parseISO(isoDate), 'dd/MM/yyyy HH:mm')
     };
 
+    const showFullAd = ref(false);
 
-    const showFullName = ref(false);
-
-    const toggleFullName = (): void => {
-        showFullName.value = !showFullName.value;
+    const toggleFullAd = (): void => {
+        showFullAd.value = !showFullAd.value;
     };
 
-    const truncatedName = computed<string>(() => {
-        let name: string = props.application.name;
-        if (!showFullName.value) {
-            name = name.substring(0, 2) + '...';
+    const truncatedAd = computed<string>(() => {
+        let ad: string = props.application.ad;
+        if (!showFullAd.value) {
+            ad = ad.substring(0, 10) + '...';
         }
-        return name;
+        return ad;
     });
 </script>
 
 <template>
     <span>Id: {{ application.id }}</span><br>
-    <span>Name: {{ truncatedName }}</span><br>
-    <button @click="toggleFullName">
-        {{ showFullName ? 'less' : 'More' }}
+    <span>Name: {{ truncatedAd }}</span><br>
+    <button @click="toggleFullAd">
+        {{ showFullAd ? 'less' : 'More' }}
     </button>
     <span>Time: {{ formatDate(application.create_time) }}</span><br><br>
 </template>
