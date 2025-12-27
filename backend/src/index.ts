@@ -10,14 +10,6 @@ const app = express();
 
 let connection: Connection;
 
-/*
-const connection = await mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE
-});
-*/
 
 async function initConnection() {
   connection = await mysql.createConnection({
@@ -35,49 +27,44 @@ app.use(express.json());
 const PORT = Number(process.env.PORT) || 3000;
 const DB_PORT = Number(process.env.MYSQL_PORT) || 3306;
 
-app.get("/hello", (_req: Request, res: Response) => {
-    console.log('HELLLO');
-  res.send("Hello Worldssss");
-});
-
 app.get("/health", (_req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 
-app.get('/test', async (req: Request, res: Response) => {
+app.get('/application', async (req: Request, res: Response) => {
   try {
-    const [rows] = await connection.execute('SELECT * FROM test');
+    const [rows] = await connection.execute('SELECT * FROM application');
     res.json(rows);
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ error: 'Failed to fetch test' });
+    res.status(500).json({ error: 'Failed to fetch applications' });
   }
 });
 
-app.post('/test', async (req: Request, res: Response) => {
+app.post('/application', async (req: Request, res: Response) => {
   try {
-    const name = req.body.name;
-    console.log(name)
+    const companyName = req.body.companyName;
+    const ad = req.body.ad;
     const [result] = await connection.execute(
-      'INSERT INTO test (name, create_time) VALUES (?, now())',
-      [name]
+      'INSERT INTO application (companyName, ad, create_time) VALUES (?, ?, now())',
+      [companyName, ad]
     );
-    res.status(201).json({ message: 'User created', result});
+    res.status(201).json({ message: 'Application created', result});
   } catch (error) {
-    res.status(500).json({ message: 'Failed to create user:'});
+    res.status(500).json({ message: 'Failed to create application:'});
   }
 });
 
-app.get('/test/delete/:id', async (req: Request, res: Response) => {
+app.get('/application/delete/:id', async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
     const [result] = await connection.execute(
-      'DELETE from test WHERE id = ?',
+      'DELETE from application WHERE id = ?',
       [id]
     );
-    res.status(201).json({ message: 'User DELETED', result});
+    res.status(201).json({ message: 'Application DELETED', result});
   } catch (error) {
-    res.status(500).json({ message: 'Unable to delete user'});
+    res.status(500).json({ message: 'Unable to delete application'});
   }
 })
 
