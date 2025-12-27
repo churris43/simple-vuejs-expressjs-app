@@ -10,14 +10,19 @@
     const formatDate = (mysqlDatetime: string): string => {
         const isoDate = mysqlDatetime.replace(' ', 'T')
         return format(parseISO(isoDate), 'dd/MM/yyyy HH:mm')
-    }
+    };
+
 
     const showFullName = ref(false);
+
+    const toggleFullName = (): void => {
+        showFullName.value = !showFullName.value;
+    };
 
     const truncatedName = computed<string>(() => {
         let name: string = props.application.name;
         if (!showFullName.value) {
-            name = name.substring(0, 10) + '...';
+            name = name.substring(0, 2) + '...';
         }
         return name;
     });
@@ -26,5 +31,8 @@
 <template>
     <span>Id: {{ application.id }}</span><br>
     <span>Name: {{ truncatedName }}</span><br>
+    <button @click="toggleFullName">
+        {{ showFullName ? 'less' : 'More' }}
+    </button>
     <span>Time: {{ formatDate(application.create_time) }}</span><br><br>
 </template>

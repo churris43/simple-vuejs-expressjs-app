@@ -3,6 +3,6 @@
 </script>
 
 <template>
-    <a href="">Home</a>
-    <a href="">Add Application</a>
+    <a href="/">Home</a>
+    <a href="/applications">Add Application</a>
 </template>
