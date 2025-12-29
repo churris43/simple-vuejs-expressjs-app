@@ -18,7 +18,7 @@
     const applications = ref<Application[]>([])
     onMounted(async () => {
         try {
-            const response = await axios.get('http://localhost/api/application');
+            const response = await axios.get('/api/application');
             applications.value = response.data;
         } catch (error) {
             console.log('Error fetching applications', error)

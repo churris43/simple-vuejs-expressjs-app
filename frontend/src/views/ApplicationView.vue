@@ -20,7 +20,7 @@
 
     onMounted(async () => {
         try {
-            const response = await axios.get('http://localhost/api/application/'+applicationId);
+            const response = await axios.get('/api/application/'+applicationId);
             application.value = response.data;
             create_time_formated = formatDate(application.value.create_time);
         } catch (error) {
