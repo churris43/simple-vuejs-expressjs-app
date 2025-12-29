@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { DefineProps, ref, computed } from 'vue';
     import { format, parseISO } from 'date-fns';
+    import { RouterLink } from 'vue-router';
 
     const props = defineProps({
         application: Object,
@@ -28,7 +29,7 @@
 </script>
 
 <template>
-    <span>Id: {{ application.id }}</span><br>
+    <RouterLink :to="'/application/'+application.id">Id: {{ application.id }}</RouterLink><br>
     <span>Company: {{ application.companyName }}</span><br>
     <span>Ad: {{ truncatedAd }}</span><br>
     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="toggleFullAd">

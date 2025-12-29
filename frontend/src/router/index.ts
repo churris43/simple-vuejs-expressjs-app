@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue'; 
 import ApplicationsView from '../views/ApplicationsView.vue';
 import NewApplicationView from '../views/NewApplicationView.vue';
+import ApplicationView from '../views/ApplicationView.vue';
 import NotFound from '../views/NotFound.vue';
 
 const router = createRouter({
@@ -11,6 +12,11 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: HomeView,
+        },
+        {
+            path: '/application/:id',
+            name: 'view-application',
+            component: ApplicationView,
         },
         {
             path: '/applications',
