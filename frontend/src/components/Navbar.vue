@@ -17,5 +17,9 @@ const isActiveLink = (routePath: string): boolean =>   {
             :class="[isActiveLink('/applications') ? 'bg-amber-100' : '']"
              to="/applications">Applications</RouterLink>
         </li>
+        <li><RouterLink
+            :class="[isActiveLink('/new') ? 'bg-amber-100' : '']"
+            to="/new">Add Application</RouterLink>
+        </li>
     </ul>
 </template>
