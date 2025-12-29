@@ -55,6 +55,24 @@ app.post('/application', async (req: Request, res: Response) => {
   }
 });
 
+app.get('/application/:id', async (req: Request, res: Response) => {
+  try {
+    const {id} = req.params;
+    const [rows] = await connection.execute(
+      'SELECT * from application WHERE id = ?',
+      [id]
+    );
+    const result = (rows as any[])[0];
+    if (!result) {
+      return res.status(404).json({ message: 'Application not found' });
+    }
+
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: 'Unable to fetch application #', error});
+  }
+})
+
 app.get('/application/delete/:id', async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
