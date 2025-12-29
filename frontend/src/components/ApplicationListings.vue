@@ -2,6 +2,7 @@
     import { ref, onMounted } from 'vue';
     import ApplicationListing from './ApplicationListing.vue';
     import { defineProps } from 'vue';
+    import axios from 'axios';
 
     defineProps({
         limit: Number
@@ -17,10 +18,10 @@
     const applications = ref<Application[]>([])
     onMounted(async () => {
         try {
-            const response = await fetch('http://localhost/api/application');
-            applications.value = await response.json();
+            const response = await axios.get('http://localhost/api/application');
+            applications.value = response.data;
         } catch (error) {
-            console.log('Error fetching applications')
+            console.log('Error fetching applications', error)
         }
     })
 </script>
