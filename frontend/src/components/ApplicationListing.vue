@@ -29,8 +29,9 @@
 
 <template>
     <span>Id: {{ application.id }}</span><br>
-    <span>Name: {{ truncatedAd }}</span><br>
-    <button @click="toggleFullAd">
+    <span>Company: {{ application.companyName }}</span><br>
+    <span>Ad: {{ truncatedAd }}</span><br>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="toggleFullAd">
         {{ showFullAd ? 'less' : 'More' }}
     </button>
     <span>Time: {{ formatDate(application.create_time) }}</span><br><br>
