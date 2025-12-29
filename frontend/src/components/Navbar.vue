@@ -1,8 +1,10 @@
 <script setup lang="ts">
-
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-    <a href="/">Home</a>
-    <a href="/applications">Add Application</a>
+    <ul>
+        <li><RouterLink to="/">Home</RouterLink></li>
+        <li><RouterLink to="/applications">Applications</RouterLink></li>
+    </ul>
 </template>
