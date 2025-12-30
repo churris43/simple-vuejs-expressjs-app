@@ -25,14 +25,15 @@
 </script>
 
 <template>
-    <RouterLink :to="`/application/edit/${applicationId}`" v-slot="{ navigate }">
-    <button  @click="navigate" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow">
-        Edit
-    </button>
+    <h3 class="text-xl font-bold mb-6">Manage Application</h3>
+    <RouterLink
+        :to="`/application/edit/${applicationId}`"
+        class="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-fit focus:outline-none focus:shadow-outline mt-4 ">
+        Edit Application
     </RouterLink>
     
     <button @click="deleteApplication"
-        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">
+        class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-fit focus:outline-none focus:shadow-outline mt-4 ">
         Delete
     </button>
 </template>

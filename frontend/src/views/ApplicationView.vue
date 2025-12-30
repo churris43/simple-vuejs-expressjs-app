@@ -33,9 +33,21 @@
 </script>
 
 <template>
-    <span>Id: {{ application.id }}</span><br>
-    <span>Company: {{ application.companyName }}</span><br>
-    <span>Ad: {{ application.ad }}</span><br>
-    <span>Time: {{ create_time_formated }}</span><br><br>
-    <DeleteEditButtons />
+    <div class="container m-auto py-10 px-6">
+        <div class="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
+            <h3 class="text-green-800 text-lg font-bold mb-6">Company</h3>
+            <h1 class="text-3xl font-bold mb-4">{{ application.companyName }}</h1>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+            <h3 class="text-green-800 text-lg font-bold mb-6">Job Ad</h3>
+            <p class="mb-4">{{ application.ad }}</p>
+
+            <h3 class="text-green-800 text-lg font-bold mb-2">Date Applied</h3>
+            <p class="mb-4">{{ create_time_formated }}</p>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+        <DeleteEditButtons />
+    </div>
 </template>

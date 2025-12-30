@@ -27,11 +27,18 @@
 </script>
 
 <template>
-    <ul>
+  <section class="bg-blue-50 px-4 py-10">
+    <div class="container-xl lg:container m-auto">
+      <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">
+        Browse Applications
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <ApplicationListing
             v-for="application in applications.slice(0, limit || applications.length)"
             :key="application.id"
-            :application="application">
-        </ApplicationListing>
-    </ul>
+            :application="application"
+        />
+        </div>
+    </div>
+  </section>
 </template>

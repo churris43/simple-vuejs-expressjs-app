@@ -29,13 +29,41 @@
 </script>
 
 <template>
-    <RouterLink 
-        :to="'/application/'+application.id"
-        class="underline">Id: {{ application.id }}</RouterLink><br>
-    <span>Company: {{ application.companyName }}</span><br>
-    <span>Ad: {{ truncatedAd }}</span><br>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="toggleFullAd">
-        {{ showFullAd ? 'less' : 'More' }}
-    </button>
-    <span>Time: {{ formatDate(application.create_time) }}</span><br><br>
+    <div class="bg-white rounded-xl shadow-md relative">
+        <div class="p-4">
+        <div class="mb-5">
+            <div>
+            {{ application.companyName }}
+            </div>
+        </div>
+        <div class="mb-5">
+            <div>
+            {{ truncatedAd }}
+            </div>
+            <button
+            @click="toggleFullAd"
+            class="text-green-500 hover:text-green-600 mb-5"
+            >
+            {{ showFullAd ? 'Less' : 'More' }}
+            </button>
+        </div>
+
+        <div class="mb-5">
+            <div>
+            {{ formatDate(application.create_time) }}
+            </div>
+        </div>
+        
+        <div class="border border-gray-100 mb-5"></div>
+
+        <div class="flex flex-col lg:flex-row justify-between mb-4">
+            <RouterLink
+            :to="'/application/'+application.id"
+            class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+            >
+            Read More
+            </RouterLink>
+        </div>
+    </div>
+  </div>
 </template>

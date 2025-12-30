@@ -5,5 +5,5 @@
 
 <template>
     <Hero title="List of Applications" subtitle="Here is the list of Applications"/>
-    <ApplicationListings :limit="4"/>
+    <ApplicationListings :limit="10"/>
 </template>

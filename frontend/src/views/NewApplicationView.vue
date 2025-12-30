@@ -50,31 +50,59 @@
 </script>
 
 <template>
-    <form @submit.prevent="handleSubmit">
-    <label for="companyName" class=" font-semibold mb-2">Company Name:</label>
-    <input 
-        v-model="form.companyName"
-        type="text" id="companyName" name="companyName" 
-        class="border rounded w-fit py-2 px-3"
-        required />
-        
-    <label for="ad" class="block font-semibold mb-2">Ad:</label>
-    <textarea
-        v-model="form.ad"
-        id="ad" name="ad" 
-        class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 min-h-[100px] resize-y"
-        required>
-    </textarea>
-        
-    <label for="create_time" class="block font-semibold mb-2">Create Time:</label>
-    <input 
-        v-model="form.create_time"
-        type="datetime-local" id="create_time" name="create_time" 
-        class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" />
-        
-    <button type="submit" 
-        class="w-fit bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200">
-        Submit
-    </button>
-    </form>
+  <section class="bg-green-50">
+    <div class="container m-auto max-w-2xl py-24">
+      <div class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+        <form @submit.prevent="handleSubmit">
+          <h2 class="text-3xl text-center font-semibold mb-6">Add Application</h2>
+
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2">Company Name</label>
+            <input
+              type="text"
+              v-model="form.companyName"
+              id="companyName"
+              name="companyName" 
+              class="border rounded w-full py-2 px-3 mb-2"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="ad" class="block text-gray-700 font-bold mb-2"
+              >Job Ad</label
+            >
+            <textarea
+              id="ad"
+              v-model="form.ad"
+              name="ad"
+              class="border rounded w-full py-2 px-3"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="create_time"
+              class="block text-gray-700 font-bold mb-2"
+              >Submission Date</label
+            >
+            <input
+              type="datetime-local"
+              v-model="form.create_time"
+              id="create_time"
+              name="create_time"
+              class="border rounded w-full py-2 px-3"
+            />
+          </div>
+
+          <div>
+            <button type="submit" 
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline">
+                    Add Application
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </template>
