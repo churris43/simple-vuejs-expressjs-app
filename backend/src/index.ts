@@ -56,6 +56,22 @@ app.post('/application', async (req: Request, res: Response) => {
   }
 });
 
+app.put('/application/:id', async (req: Request, res: Response) => {
+  try {
+    const {id} = req.params;
+    const companyName = req.body.companyName;
+    const ad = req.body.ad;
+    const create_time = req.body.create_time;
+    const [result] = await connection.execute(
+      'UPDATE application SET companyName = ?, ad = ?, create_time=? where id = ?',
+      [companyName, ad, create_time, id]
+    );
+    res.status(201).json({ message: 'Application edited', result});
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to edit application:'});
+  }
+});
+
 app.get('/application/:id', async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
