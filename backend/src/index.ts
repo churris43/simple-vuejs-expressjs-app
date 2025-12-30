@@ -74,7 +74,7 @@ app.get('/application/:id', async (req: Request, res: Response) => {
   }
 })
 
-app.get('/application/delete/:id', async (req: Request, res: Response) => {
+app.delete('/application/:id', async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
     const [result] = await connection.execute(
