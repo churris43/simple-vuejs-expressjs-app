@@ -45,9 +45,10 @@ app.post('/application', async (req: Request, res: Response) => {
   try {
     const companyName = req.body.companyName;
     const ad = req.body.ad;
+    const create_time = req.body.create_time;
     const [result] = await connection.execute(
-      'INSERT INTO application (companyName, ad, create_time) VALUES (?, ?, now())',
-      [companyName, ad]
+      'INSERT INTO application (companyName, ad, create_time) VALUES (?, ?, ?)',
+      [companyName, ad, create_time]
     );
     res.status(201).json({ message: 'Application created', result});
   } catch (error) {
