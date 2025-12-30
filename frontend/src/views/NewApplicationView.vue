@@ -2,7 +2,12 @@
     import { reactive } from 'vue';
     import { format } from 'date-fns';
     import { useToast } from 'vue-toastification';
+    import { useRouter } from 'vue-router';
+
     import axios from 'axios';
+    
+    const router = useRouter();
+
     const toast = useToast();
 
     const showSuccessToast = () => {
@@ -36,6 +41,7 @@
         try {
             const response = await axios.post('api/application', newApplication);
             showSuccessToast();
+            router.push('/applications');
         } catch (error) {
             console.error("Error creating the new application", error)
             showErrorToast();
