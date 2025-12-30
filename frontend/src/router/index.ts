@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import ApplicationsView from '../views/ApplicationsView.vue';
 import NewApplicationView from '../views/NewApplicationView.vue';
 import ApplicationView from '../views/ApplicationView.vue';
+import EditApplicationView from '../views/EditApplicationView.vue';
 import NotFound from '../views/NotFound.vue';
 
 const router = createRouter({
@@ -17,6 +18,11 @@ const router = createRouter({
             path: '/application/:id',
             name: 'view-application',
             component: ApplicationView,
+        },
+        {
+            path: '/application/edit/:id',
+            name: 'edit-application',
+            component: EditApplicationView,
         },
         {
             path: '/applications',

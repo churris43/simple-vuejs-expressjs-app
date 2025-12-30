@@ -2,6 +2,7 @@
     import { useRoute, Router, useRouter } from 'vue-router';
     import axios from 'axios';
     import { useToast } from 'vue-toastification';
+    import { RouterLink } from 'vue-router';
 
     const route = useRoute();
     const router = useRouter();
@@ -24,6 +25,12 @@
 </script>
 
 <template>
+    <RouterLink :to="`/application/edit/${applicationId}`" v-slot="{ navigate }">
+    <button  @click="navigate" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow">
+        Edit
+    </button>
+    </RouterLink>
+    
     <button @click="deleteApplication"
         class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">
         Delete
