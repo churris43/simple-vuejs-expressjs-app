@@ -3,6 +3,7 @@
     import { useRoute } from 'vue-router';
     import { format, parseISO } from 'date-fns';
     import axios from 'axios';
+    import DeleteEditButtons from '../components/DeleteEditButtons.vue';
 
     const route = useRoute();
 
@@ -28,6 +29,7 @@
         }
     })
 
+    
 </script>
 
 <template>
@@ -35,6 +37,5 @@
     <span>Company: {{ application.companyName }}</span><br>
     <span>Ad: {{ application.ad }}</span><br>
     <span>Time: {{ create_time_formated }}</span><br><br>
-
-
+    <DeleteEditButtons />
 </template>
