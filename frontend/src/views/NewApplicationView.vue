@@ -1,7 +1,20 @@
 <script setup lang="ts">
     import { reactive } from 'vue';
     import { format } from 'date-fns';
-import axios from 'axios';
+    import { useToast } from 'vue-toastification';
+    import axios from 'axios';
+    const toast = useToast();
+
+    const showSuccessToast = () => {
+        toast.success("Application added succesfully")
+    };
+
+    const showErrorToast = () => {
+        toast.error(
+            "Something went wrong",
+                {timeout: 2000}
+        );
+    };
 
     const formattedCurrentDateTime: string = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss");
 
@@ -22,8 +35,10 @@ import axios from 'axios';
         }
         try {
             const response = await axios.post('api/application', newApplication);
+            showSuccessToast();
         } catch (error) {
             console.error("Error creating the new application", error)
+            showErrorToast();
         }
     };
 </script>
