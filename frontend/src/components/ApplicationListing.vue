@@ -22,7 +22,7 @@
     const truncatedAd = computed<string>(() => {
         let ad: string = props.application.ad;
         if (!showFullAd.value) {
-            ad = ad.substring(0, 10) + '...';
+            ad = ad.substring(0, 200) + '...';
         }
         return ad;
     });
@@ -36,7 +36,7 @@
             {{ application.companyName }}
             </div>
         </div>
-        <div class="mb-5">
+        <div class="mb-5 whitespace-pre-wrap">
             <div>
             {{ truncatedAd }}
             </div>
