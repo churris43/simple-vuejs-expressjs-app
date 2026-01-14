@@ -31,7 +31,7 @@
 <template>
     <div class="bg-white rounded-xl shadow-md relative">
         <div class="p-4">
-        <div class="mb-5">
+        <div class="mb-5 text-2xl">
             <div>
             {{ application.companyName }}
             </div>
