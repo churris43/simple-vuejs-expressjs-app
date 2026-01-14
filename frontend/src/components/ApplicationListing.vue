@@ -14,7 +14,7 @@ const toggleFullAd = (): void => {
 
 const truncatedAd = computed<string>(() => {
   let ad: string = props.application.ad;
-  if (!showFullAd.value) {
+  if (!showFullAd.value && ad.length > 200) {
     ad = ad.substring(0, 200) + "...";
   }
   return ad;
@@ -34,6 +34,7 @@ const truncatedAd = computed<string>(() => {
           {{ truncatedAd }}
         </div>
         <button
+          v-if="application.ad.length > 200"
           @click="toggleFullAd"
           class="text-green-500 hover:text-green-600 mb-5"
         >
