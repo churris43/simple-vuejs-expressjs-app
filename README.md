@@ -36,4 +36,4 @@ The application can be accessed in `http://localhost`
 
 ### Note:
 
-This is inspired by the excellent tutorial from [Brad Traversy](https://www.youtube.com/watch?v=LDB4uaJ87e0)
+This is inspired by the excellent tutorial from [Brad Traversy](https://www.youtube.com/watch?v=VeNfHj6MhgA)
